@@ -12,7 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background: linear-gradient(to bottom right, #A7C6ED, #B8E2D7); /* Soft blue to pale mint green gradient */
         }
         .container {
             text-align: center;
@@ -38,6 +38,20 @@
             margin-top: 10px;
             color: #888;
         }
+        #countdown {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .timer-box {
+            background-color: #e0e0e0;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-size: 24px; /* Adjusted to match the quote size */
+            font-weight: normal; /* Changed to normal to match other text */
+            font-family: Arial, sans-serif; /* Ensure same font as the rest */
+        }
     </style>
 </head>
 <body>
@@ -47,11 +61,17 @@
     <p id="date"></p>
     <p id="quote"></p>
     <p id="author"></p>
+    <div id="countdown">
+        <div class="timer-box" id="hours">00</div>
+        <div class="timer-box" id="minutes">00</div>
+        <div class="timer-box" id="seconds">00</div>
+    </div>
 </div>
 
 <script>
-    // Quotes for each day of the year, 1st of January is "1-1", 2nd of January is "1-2", and so on.
-    const dailyQuotes = {
+    // Quotes for each day of the year
+// Quotes for each day of the year, 1st of January is "1-1", 2nd of January is "1-2", and so on.
+const dailyQuotes = {
     "1-1": { quote: "The journey of a thousand miles begins with one step.", author: "Lao Tzu" },
     "1-2": { quote: "Whatever you are, be a good one.", author: "Abraham Lincoln" },
     "1-3": { quote: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
@@ -443,9 +463,7 @@
     "12-31": { quote: "The best way to predict your future is to create it.", author: "Peter Drucker" },
 
 
-
-};
-
+    };
 
     // Function to get the quote for the current day
     function getQuoteForToday() {
@@ -464,12 +482,46 @@
         document.getElementById('date').textContent = `Today is: ${formattedDate}`;
     }
 
-    // Display the date and the quote
+    // Function to start the countdown timer
+    function startCountdown() {
+        const now = new Date();
+        // Set the next quote time to midnight of the next day
+        const nextQuoteTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); 
+
+        const updateCountdown = () => {
+            const now = new Date();
+            const timeLeft = nextQuoteTime - now;
+
+            // Stop the timer if the time has passed
+            if (timeLeft < 0) {
+                clearInterval(timerInterval);
+                document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00";
+                document.getElementById('seconds').textContent = "00";
+                return;
+            }
+
+            const hours = String(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
+
+            // Display countdown
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        };
+
+        updateCountdown(); // Initial call to display immediately
+        const timerInterval = setInterval(updateCountdown, 1000);
+    }
+
+    // Display the date and the quote, then start the countdown
     document.addEventListener('DOMContentLoaded', function () {
         displayDate();
         const quoteData = getQuoteForToday();
         document.getElementById('quote').textContent = `"${quoteData.quote}"`;
         document.getElementById('author').textContent = `- ${quoteData.author}`;
+        startCountdown(); // Start the countdown timer
     });
 </script>
 
