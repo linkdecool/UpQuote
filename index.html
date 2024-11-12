@@ -80,6 +80,7 @@
     <select id="contentType">
         <option value="quotes">Quotes</option>
         <option value="bibleVerses">Bible Verses</option>
+        <option value="affirmations">Affirmations</option> <!-- Added option for affirmations -->
     </select>
     <p id="date"></p>
     <p id="content"></p>
@@ -95,15 +96,35 @@
 <script>
     // Function to get the inspiration content based on type
     function getInspiration(type) {
-        const today = new Date();
-        const dayMonth = `${today.getMonth() + 1}-${today.getDate()}`;
-        
-        if (type === 'quotes') {
-            return dailyQuotes[dayMonth] || { quote: "Make every day count!", author: "Unknown" };
-        } else if (type === 'bibleVerses') {
-            return dailyBibleVerses[dayMonth] || { verse: "Trust in the Lord with all your heart.", reference: "Proverbs 3:5" };
-        }
+    const today = new Date();
+    const dayMonth = `${today.getMonth() + 1}-${today.getDate()}`;
+    
+    if (type === 'quotes') {
+        return dailyQuotes[dayMonth] || { quote: "Make every day count!", author: "Unknown" };
+    } else if (type === 'bibleVerses') {
+        return dailyBibleVerses[dayMonth] || { verse: "Trust in the Lord with all your heart.", reference: "Proverbs 3:5" };
+    } else if (type === 'affirmations') {
+        return dailyAffirmations[dayMonth] || { affirmation: "You are enough." }; // Default affirmation
     }
+}
+
+// Function to display the selected type of inspiration
+function displayInspiration() {
+    const contentType = document.getElementById('contentType').value;
+    localStorage.setItem('contentType', contentType);  // Save the user's choice in localStorage
+    const inspirationData = getInspiration(contentType);
+    
+    if (contentType === 'quotes') {
+        document.getElementById('content').textContent = `"${inspirationData.quote}"`;
+        document.getElementById('source').textContent = `- ${inspirationData.author}`;
+    } else if (contentType === 'bibleVerses') {
+        document.getElementById('content').textContent = `"${inspirationData.verse}"`;
+        document.getElementById('source').textContent = `- ${inspirationData.reference}`;
+    } else if (contentType === 'affirmations') {
+        document.getElementById('content').textContent = `"${inspirationData.affirmation}"`;
+        document.getElementById('source').textContent = ""; // No author for affirmations
+    }
+}
 
     // Function to display the current date
     function displayDate() {
@@ -113,19 +134,7 @@
     }
 
     // Function to display the selected type of inspiration
-    function displayInspiration() {
-        const contentType = document.getElementById('contentType').value;
-        localStorage.setItem('contentType', contentType);  // Save the user's choice in localStorage
-        const inspirationData = getInspiration(contentType);
-        
-        if (contentType === 'quotes') {
-            document.getElementById('content').textContent = `"${inspirationData.quote}"`;
-            document.getElementById('source').textContent = `- ${inspirationData.author}`;
-        } else if (contentType === 'bibleVerses') {
-            document.getElementById('content').textContent = `"${inspirationData.verse}"`;
-            document.getElementById('source').textContent = `- ${inspirationData.reference}`;
-        }
-    }
+    
 
     // Function to start the countdown timer to midnight
     function startCountdown() {
