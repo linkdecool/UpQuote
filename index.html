@@ -4,137 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Inspiration</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden; /* Prevent scrolling due to clouds */
-            background: linear-gradient(135deg, #56bde6, #76d7e4);
-            color: #fff;
-        }
-        #clouds {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 0; /* Ensure clouds stay behind the text box */
-            pointer-events: none; /* Prevent interaction with clouds */
-        }
-
-        /* Cloud image styles */
-        .cloud {
-            position: absolute;
-            background: transparent; /* Remove background color */
-            opacity: 0.9;
-            pointer-events: none; /* Ensure no interaction with clouds */
-        }
-
-        /* Cloud sizes and positions */
-        .cloud1 {
-            width: 100px;
-            height: auto; /* Maintain aspect ratio */
-            top: 10%; /* Adjusted to move above the text box */
-            left: -200px; /* Start well off-screen */
-            animation: moveCloud 30s linear infinite;
-        }
-        .cloud2 {
-            width: 140px;
-            height: auto; /* Maintain aspect ratio */
-            top: 30%; /* Adjusted to move above the text box */
-            left: -250px;
-            animation: moveCloud 23s linear infinite;
-        }
-        .cloud3 {
-            width: 80px;
-            height: auto; /* Maintain aspect ratio */
-            top: 50%; /* Adjusted to move above the text box */
-            left: -150px;
-            animation: moveCloud 20s linear infinite;
-        }
-
-        /* Cloud animation */
-        @keyframes moveCloud {
-            from {
-                left: -300px; /* Start far off the left screen */
-            }
-            to {
-                left: 110%; /* Move far beyond the right screen */
-            }
-        }
-
-        .container {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            z-index: 1; /* Keep above clouds */
-        }
-        h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-        }
-        p {
-            font-size: 20px;
-            line-height: 1.5;
-        }
-        #date {
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        #content {
-            font-style: italic;
-            font-size: 24px;
-            margin: 20px 0;
-        }
-        #source {
-            color: #cfe8f7;
-            font-size: 18px;
-        }
-        #countdown {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .timer-box {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            margin: 0 5px;
-            border-radius: 8px;
-            font-size: 20px;
-            font-weight: bold;
-            color: #fff;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        select {
-            margin-bottom: 20px;
-            padding: 12px 18px;
-            font-size: 18px;
-            background: rgba(255, 255, 255, 0.9); /* Clear background for visibility */
-            color: #333; /* Dark text for readability */
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            outline: none;
-        }
-        select:hover {
-            background: rgba(255, 255, 255, 1);
-            border-color: #50e3c2;
-        }
-        select:focus {
-            border-color: #50e3c2;
-            box-shadow: 0 4px 15px rgba(80, 227, 194, 0.5);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
 </head>
 <body>
     <div id="clouds">
@@ -158,88 +28,78 @@
             <div class="timer-box" id="seconds">00</div>
         </div>
     </div>
+    <script src="quotes.js"></script> <!-- Link to the external JavaScript file with the data -->
     <script>
-        // Example content for demonstration
-        const dailyQuotes = {
-        "11-16": { quote: "The best way to predict the future is to create it.", author: "Peter Drucker" }
-    };
-    const dailyBibleVerses = {
-        "11-16": { verse: "For I know the plans I have for you, declares the Lord.", reference: "Jeremiah 29:11" }
-    };
-    const dailyAffirmations = {
-        "11-16": { affirmation: "You are capable of amazing things." }
-    };
-
-    // Function to get inspiration content based on type
-    function getInspiration(type) {
-        const today = new Date();
-        const dayMonth = `${today.getMonth() + 1}-${today.getDate()}`;
-        
-        if (type === 'quotes') {
-            return dailyQuotes[dayMonth] || { quote: "Make every day count!", author: "Unknown" };
-        } else if (type === 'bibleVerses') {
-            return dailyBibleVerses[dayMonth] || { verse: "Trust in the Lord with all your heart.", reference: "Proverbs 3:5" };
-        } else if (type === 'affirmations') {
-            return dailyAffirmations[dayMonth] || { affirmation: "You are enough." };
+        // Function to get inspiration content based on type
+        function getInspiration(type) {
+            const today = new Date();
+            const dayMonth = `${today.getMonth() + 1}-${today.getDate()}`;
+            
+            if (type === 'quotes') {
+                return dailyQuotes[dayMonth] || { quote: "Make every day count!", author: "Unknown" };
+            } else if (type === 'bibleVerses') {
+                return dailyBibleVerses[dayMonth] || { verse: "Trust in the Lord with all your heart.", reference: "Proverbs 3:5" };
+            } else if (type === 'affirmations') {
+                return dailyAffirmations[dayMonth] || { affirmation: "You are enough." };
+            }
         }
-    }
 
-    // Function to display the selected type of inspiration
-    function displayInspiration() {
-        const contentType = document.getElementById('contentType').value;
-        localStorage.setItem('contentType', contentType); // Save the user's choice in localStorage
-        const inspirationData = getInspiration(contentType);
-        
-        if (contentType === 'quotes') {
-            document.getElementById('content').textContent = `"${inspirationData.quote}"`;
-            document.getElementById('source').textContent = `- ${inspirationData.author}`;
-        } else if (contentType === 'bibleVerses') {
-            document.getElementById('content').textContent = `"${inspirationData.verse}"`;
-            document.getElementById('source').textContent = `- ${inspirationData.reference}`;
-        } else if (contentType === 'affirmations') {
-            document.getElementById('content').textContent = `"${inspirationData.affirmation}"`;
-            document.getElementById('source').textContent = ""; // No author for affirmations
+        // Function to display the selected type of inspiration
+        function displayInspiration() {
+            const contentType = document.getElementById('contentType').value;
+            localStorage.setItem('contentType', contentType); // Save the user's choice in localStorage
+            const inspirationData = getInspiration(contentType);
+            
+            if (contentType === 'quotes') {
+                document.getElementById('content').textContent = `"${inspirationData.quote}"`;
+                document.getElementById('source').textContent = `- ${inspirationData.author}`;
+            } else if (contentType === 'bibleVerses') {
+                document.getElementById('content').textContent = `"${inspirationData.verse}"`;
+                document.getElementById('source').textContent = `- ${inspirationData.reference}`;
+            } else if (contentType === 'affirmations') {
+                document.getElementById('content').textContent = `"${inspirationData.affirmation}"`;
+                document.getElementById('source').textContent = ""; // No author for affirmations
+            }
         }
-    }
 
-    // Function to display the current date
-    function displayDate() {
-        const today = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('date').textContent = `Today is: ${today.toLocaleDateString(undefined, options)}`;
-    }
+        // Function to display the current date
+        function displayDate() {
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').textContent = `Today is: ${today.toLocaleDateString(undefined, options)}`;
+        }
 
-    // Function to start the countdown timer to midnight
-    function startCountdown() {
-        const now = new Date();
-        const nextQuoteTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); // Midnight
-        const timeLeft = nextQuoteTime - now;
+        // Function to start the countdown timer to midnight
+        function startCountdown() {
+            const now = new Date();
+            const nextQuoteTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); // Midnight
+            const timeLeft = nextQuoteTime - now;
 
-        const updateCountdown = () => {
-            const timeLeft = nextQuoteTime - new Date();
-            const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            const updateCountdown = () => {
+                const timeLeft = nextQuoteTime - new Date();
+                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            };
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+        }
+
+        // Event listener for content type change
+        document.getElementById('contentType').addEventListener('change', displayInspiration);
+
+        // On page load
+        window.onload = () => {
+            const savedContentType = localStorage.getItem('contentType') || 'quotes'; // Load saved content type or default to quotes
+            document.getElementById('contentType').value = savedContentType;
+            displayInspiration();
+            displayDate();
+            startCountdown();
         };
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    }
-
-    // Event listener for content type change
-    document.getElementById('contentType').addEventListener('change', displayInspiration);
-
-    // On page load
-    window.onload = () => {
-        const savedContentType = localStorage.getItem('contentType') || 'quotes'; // Load saved content type or default to quotes
-        document.getElementById('contentType').value = savedContentType;
-        displayInspiration();
-        displayDate();
-        startCountdown();
-    };
     </script>
 </body>
 </html>

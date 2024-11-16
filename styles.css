@@ -1,0 +1,154 @@
+/* General Body and Background */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling due to clouds */
+    background: linear-gradient(135deg, #87CEEB, #76d7e4);
+    color: #fff;
+}
+
+/* Cloud Container */
+#clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; /* Ensure clouds stay behind the text box */
+    pointer-events: none; /* Prevent interaction with clouds */
+}
+
+/* Cloud Image Styles */
+.cloud {
+    position: absolute;
+    background: transparent; /* Remove background color */
+    opacity: 0.9;
+    pointer-events: none; /* Ensure no interaction with clouds */
+}
+
+/* Cloud Specifics */
+.cloud1 {
+    width: 100px;
+    height: auto; /* Maintain aspect ratio */
+    top: 10%; /* Adjusted to move above the text box */
+    left: -200px; /* Start well off-screen */
+    animation: moveCloud 30s linear infinite;
+}
+
+.cloud2 {
+    width: 140px;
+    height: auto; /* Maintain aspect ratio */
+    top: 30%; /* Adjusted to move above the text box */
+    left: -250px;
+    animation: moveCloud 23s linear infinite;
+}
+
+.cloud3 {
+    width: 80px;
+    height: auto; /* Maintain aspect ratio */
+    top: 50%; /* Adjusted to move above the text box */
+    left: -150px;
+    animation: moveCloud 20s linear infinite;
+}
+
+/* Cloud Animation */
+@keyframes moveCloud {
+    from {
+        left: -300px; /* Start far off the left screen */
+    }
+    to {
+        left: 110%; /* Move far beyond the right screen */
+    }
+}
+
+/* Container Box (where the quote appears) */
+.container {
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 1; /* Keep above clouds */
+}
+
+/* Heading */
+h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Paragraphs */
+p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+/* Date Styling */
+#date {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Content Box (Quote, Bible Verse, or Affirmation) */
+#content {
+    font-style: italic;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+/* Source */
+#source {
+    color: #cfe8f7;
+    font-size: 18px;
+}
+
+/* Countdown Timer */
+#countdown {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Timer Box */
+.timer-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Select Box */
+select {
+    margin-bottom: 20px;
+    padding: 12px 18px;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.9); /* Clear background for visibility */
+    color: #333; /* Dark text for readability */
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+/* Hover and Focus Effects for Select */
+select:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: #50e3c2;
+}
+
+select:focus {
+    border-color: #50e3c2;
+    box-shadow: 0 4px 15px rgba(80, 227, 194, 0.5);
+}
