@@ -3,15 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Inspiration</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <title>NFC-Restricted Daily Inspiration</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="quotes.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Check URL for NFC path
+            const path = window.location.pathname;
+            
+            if (path !== "/nfc-access") {
+                // Restrict access
+                document.body.innerHTML = `
+                    <div class="restricted">
+                        <h1>Access Denied</h1>
+                        <p>This page is only accessible via an UpBand.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Functions to display inspiration content
+            const getInspiration = (type) => {
+                const today = new Date();
+                const dayMonth = `${today.getMonth() + 1}-${today.getDate()}`;
+                if (type === 'quotes') {
+                    return dailyQuotes[dayMonth] || { quote: "Make every day count!", author: "Unknown" };
+                } else if (type === 'bibleVerses') {
+                    return dailyBibleVerses[dayMonth] || { verse: "Trust in the Lord with all your heart.", reference: "Proverbs 3:5" };
+                } else if (type === 'affirmations') {
+                    return dailyAffirmations[dayMonth] || { affirmation: "You are enough." };
+                }
+            };
+
+            const displayInspiration = () => {
+                const contentType = document.getElementById('contentType').value;
+                localStorage.setItem('contentType', contentType); // Save preference
+                const inspirationData = getInspiration(contentType);
+
+                if (contentType === 'quotes') {
+                    document.getElementById('content').textContent = `"${inspirationData.quote}"`;
+                    document.getElementById('source').textContent = `- ${inspirationData.author}`;
+                } else if (contentType === 'bibleVerses') {
+                    document.getElementById('content').textContent = `"${inspirationData.verse}"`;
+                    document.getElementById('source').textContent = `- ${inspirationData.reference}`;
+                } else if (contentType === 'affirmations') {
+                    document.getElementById('content').textContent = `"${inspirationData.affirmation}"`;
+                    document.getElementById('source').textContent = ""; // No author for affirmations
+                }
+            };
+
+            const displayDate = () => {
+                const today = new Date();
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                document.getElementById('date').textContent = `Today is: ${today.toLocaleDateString(undefined, options)}`;
+            };
+
+            const startCountdown = () => {
+                const now = new Date();
+                const nextQuoteTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); 
+
+                const updateCountdown = () => {
+                    const now = new Date();
+                    const timeLeft = nextQuoteTime - now;
+
+                    if (timeLeft < 0) {
+                        clearInterval(timerInterval);
+                        document.getElementById('hours').textContent = "00";
+                        document.getElementById('minutes').textContent = "00";
+                        document.getElementById('seconds').textContent = "00";
+                        return;
+                    }
+
+                    const hours = String(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                    const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                    const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
+
+                    document.getElementById('hours').textContent = hours;
+                    document.getElementById('minutes').textContent = minutes;
+                    document.getElementById('seconds').textContent = seconds;
+                };
+
+                updateCountdown();
+                const timerInterval = setInterval(updateCountdown, 1000);
+            };
+
+            // Initialize content
+            const savedContentType = localStorage.getItem('contentType') || 'quotes'; // Default to 'quotes'
+            document.getElementById('contentType').value = savedContentType;
+
+            displayDate();
+            displayInspiration();
+            startCountdown();
+
+            document.getElementById('contentType').addEventListener('change', displayInspiration);
+        });
+    </script>
 </head>
 <body>
-    <div id="clouds">
-        <img src="cloud1.png" class="cloud cloud1" alt="Cloud 1">
-        <img src="cloud2.png" class="cloud cloud2" alt="Cloud 2">
-        <img src="cloud3.png" class="cloud cloud3" alt="Cloud 3">
+    <div class="clouds">
+        <div class="cloud cloud1"></div>
+        <div class="cloud cloud2"></div>
+        <div class="cloud cloud3"></div>
     </div>
+
     <div class="container">
         <h1>Daily Inspiration</h1>
         <select id="contentType">
@@ -28,78 +122,5 @@
             <div class="timer-box" id="seconds">00</div>
         </div>
     </div>
-    <script src="quotes.js"></script> <!-- Link to the external JavaScript file with the data -->
-    <script>
-        // Function to get inspiration content based on type
-        function getInspiration(type) {
-            const today = new Date();
-            const dayMonth = `${today.getMonth() + 1}-${today.getDate()}`;
-            
-            if (type === 'quotes') {
-                return dailyQuotes[dayMonth] || { quote: "Make every day count!", author: "Unknown" };
-            } else if (type === 'bibleVerses') {
-                return dailyBibleVerses[dayMonth] || { verse: "Trust in the Lord with all your heart.", reference: "Proverbs 3:5" };
-            } else if (type === 'affirmations') {
-                return dailyAffirmations[dayMonth] || { affirmation: "You are enough." };
-            }
-        }
-
-        // Function to display the selected type of inspiration
-        function displayInspiration() {
-            const contentType = document.getElementById('contentType').value;
-            localStorage.setItem('contentType', contentType); // Save the user's choice in localStorage
-            const inspirationData = getInspiration(contentType);
-            
-            if (contentType === 'quotes') {
-                document.getElementById('content').textContent = `"${inspirationData.quote}"`;
-                document.getElementById('source').textContent = `- ${inspirationData.author}`;
-            } else if (contentType === 'bibleVerses') {
-                document.getElementById('content').textContent = `"${inspirationData.verse}"`;
-                document.getElementById('source').textContent = `- ${inspirationData.reference}`;
-            } else if (contentType === 'affirmations') {
-                document.getElementById('content').textContent = `"${inspirationData.affirmation}"`;
-                document.getElementById('source').textContent = ""; // No author for affirmations
-            }
-        }
-
-        // Function to display the current date
-        function displayDate() {
-            const today = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('date').textContent = `Today is: ${today.toLocaleDateString(undefined, options)}`;
-        }
-
-        // Function to start the countdown timer to midnight
-        function startCountdown() {
-            const now = new Date();
-            const nextQuoteTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); // Midnight
-            const timeLeft = nextQuoteTime - now;
-
-            const updateCountdown = () => {
-                const timeLeft = nextQuoteTime - new Date();
-                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            };
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
-        }
-
-        // Event listener for content type change
-        document.getElementById('contentType').addEventListener('change', displayInspiration);
-
-        // On page load
-        window.onload = () => {
-            const savedContentType = localStorage.getItem('contentType') || 'quotes'; // Load saved content type or default to quotes
-            document.getElementById('contentType').value = savedContentType;
-            displayInspiration();
-            displayDate();
-            startCountdown();
-        };
-    </script>
 </body>
 </html>
