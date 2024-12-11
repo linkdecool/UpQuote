@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Request</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        form {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        textarea, input[type="text"], input[type="email"] {
+            width: 100%;
+            margin: 1rem 0;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        .success-message {
+            display: none;
+            color: green;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Feature Request</h1>
+    <form id="featureRequestForm" action="https://formspree.io/f/xyzyannp" method="POST">
+        <label for="name">Your Name (optional):</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name">
+        
+        <label for="email">Your Email (optional):</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email">
+        
+        <label for="request">Feature Request:</label>
+        <textarea id="request" name="request" rows="5" placeholder="Describe your feature request..." required></textarea>
+        
+        <button type="submit">Submit Request</button>
+        <p class="success-message" id="successMessage">Thank you! Your request has been submitted.</p>
+    </form>
+
+    <script>
+        document.getElementById("featureRequestForm").addEventListener("submit", function(event) {
+            const form = event.target;
+            const successMessage = document.getElementById("successMessage");
+
+            event.preventDefault(); // Prevent default form submission
+
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    successMessage.style.display = "block";
+                    form.reset(); // Clear the form fields
+                } else {
+                    alert("Oops! Something went wrong. Please try again.");
+                }
+            }).catch(() => {
+                alert("Oops! Something went wrong. Please try again.");
+            });
+        });
+    </script>
+</body>
+</html>

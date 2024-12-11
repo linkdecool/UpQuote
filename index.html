@@ -10,6 +10,21 @@
         body {
             display: none;
         }
+
+        .feature-request-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .feature-request-btn:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body>
@@ -33,6 +48,8 @@
             <div class="timer-box" id="minutes">00</div>
             <div class="timer-box" id="seconds">00</div>
         </div>
+        <!-- Feature Request Button -->
+        <button class="feature-request-btn" onclick="window.location.href='feature-request.html'">Have a feature request?</button>
     </div>
     <script src="quotes.js"></script> <!-- Link to the external JavaScript file with the data -->
     <script>
@@ -41,7 +58,7 @@
         if (urlParams.get('nfc') !== 'true') {
             // Hide the content if the parameter is missing or incorrect
             document.body.style.display = 'none';
-            alert('This page is only accessible through the NFC link.');
+            alert('This page is only accessible through an UpBand.');
         } else {
             // If the parameter is correct, display the content
             document.body.style.display = 'block';
@@ -52,7 +69,7 @@
             const today = new Date();
             const dayMonth = `${today.getMonth() + 1}-${today.getDate()}`;
             
-            if (type === 'quotes') {
+            if (type === 'quotes') { 
                 return dailyQuotes[dayMonth] || { quote: "Make every day count!", author: "Unknown" };
             } else if (type === 'bibleVerses') {
                 return dailyBibleVerses[dayMonth] || { verse: "Trust in the Lord with all your heart.", reference: "Proverbs 3:5" };
