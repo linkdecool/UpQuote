@@ -24,10 +24,12 @@
             <option value="quotes">Quotes</option>
             <option value="bibleVerses">Bible Verses</option>
             <option value="affirmations">Affirmations</option>
+            <option value="songs">Song of the Day</option> <!-- New Option -->
         </select>
         <p id="date"></p>
         <p id="content"></p>
         <p id="source"></p>
+        <p id="song"></p> <!-- Placeholder for Song of the Day -->
         <div id="countdown">
             <div class="timer-box" id="hours">00</div>
             <div class="timer-box" id="minutes">00</div>
@@ -37,16 +39,14 @@
             <a href="feature-request.html">Have a feature request? Click here!</a>
         </p>
     </div>
-    <script src="quotes.js"></script> <!-- Link to the external JavaScript file with the data -->
+    <script src="quotes.js"></script> <!-- Link to the external JavaScript file with data -->
     <script>
         // Check if URL contains '?nfc=true'
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('nfc') !== 'true') {
-            // Hide the content if the parameter is missing or incorrect
             document.body.style.display = 'none';
             alert('This page is only accessible through an UpBand.');
         } else {
-            // If the parameter is correct, display the content
             document.body.style.display = 'block';
         }
 
@@ -54,31 +54,41 @@
         function getInspiration(type) {
             const today = new Date();
             const dayMonth = `${today.getMonth() + 1}-${today.getDate()}`;
-            
-            if (type === 'quotes') { 
+
+            if (type === 'quotes') {
                 return dailyQuotes[dayMonth] || { quote: "Make every day count!", author: "Unknown" };
             } else if (type === 'bibleVerses') {
                 return dailyBibleVerses[dayMonth] || { verse: "Trust in the Lord with all your heart.", reference: "Proverbs 3:5" };
             } else if (type === 'affirmations') {
                 return dailyAffirmations[dayMonth] || { affirmation: "You are enough." };
+            } else if (type === 'songs') {
+                return dailySongs[dayMonth] || { song: "No song available for today." };
             }
         }
 
         // Function to display the selected type of inspiration
         function displayInspiration() {
             const contentType = document.getElementById('contentType').value;
-            localStorage.setItem('contentType', contentType); // Save the user's choice in localStorage
+            localStorage.setItem('contentType', contentType); // Save selection
+
             const inspirationData = getInspiration(contentType);
-            
+
             if (contentType === 'quotes') {
                 document.getElementById('content').textContent = `"${inspirationData.quote}"`;
                 document.getElementById('source').textContent = `- ${inspirationData.author}`;
+                document.getElementById('song').textContent = "";
             } else if (contentType === 'bibleVerses') {
                 document.getElementById('content').textContent = `"${inspirationData.verse}"`;
                 document.getElementById('source').textContent = `- ${inspirationData.reference}`;
+                document.getElementById('song').textContent = "";
             } else if (contentType === 'affirmations') {
                 document.getElementById('content').textContent = `"${inspirationData.affirmation}"`;
-                document.getElementById('source').textContent = ""; // No author for affirmations
+                document.getElementById('source').textContent = "";
+                document.getElementById('song').textContent = "";
+            } else if (contentType === 'songs') {
+                document.getElementById('content').textContent = "";
+                document.getElementById('source').textContent = "";
+                document.getElementById('song').textContent = `🎵 Song of the Day: ${inspirationData.song}`;
             }
         }
 
@@ -92,7 +102,7 @@
         // Function to start the countdown timer to midnight
         function startCountdown() {
             const now = new Date();
-            const nextQuoteTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); // Midnight
+            const nextQuoteTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
             const timeLeft = nextQuoteTime - now;
 
             const updateCountdown = () => {
@@ -114,7 +124,7 @@
 
         // On page load
         window.onload = () => {
-            const savedContentType = localStorage.getItem('contentType') || 'quotes'; // Load saved content type or default to quotes
+            const savedContentType = localStorage.getItem('contentType') || 'quotes';
             document.getElementById('contentType').value = savedContentType;
             displayInspiration();
             displayDate();

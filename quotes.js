@@ -1231,3 +1231,383 @@ const dailyAffirmations = {
     // Continue adding for the remaining months
 
 };
+
+const dailySongs = {
+    "1-1": { song: "Happy by Pharrell Williams" }, // Pop
+    "1-2": { song: "Blinding Lights by The Weeknd" }, // Synthwave
+    "1-3": { song: "Shape of You by Ed Sheeran" }, // Pop
+    "1-4": { song: "Rolling in the Deep by Adele" }, // Soul
+    "1-5": { song: "Uptown Funk by Mark Ronson ft. Bruno Mars" }, // Funk
+    "1-6": { song: "Lose Yourself by Eminem" }, // Hip-Hop
+    "1-7": { song: "Bohemian Rhapsody by Queen" }, // Rock
+    "1-8": { song: "Stay by The Kid LAROI & Justin Bieber" }, // Pop
+    "1-9": { song: "Savage Love by Jawsh 685 & Jason Derulo" }, // Pop
+    "1-10": { song: "Watermelon Sugar by Harry Styles" }, // Pop
+    "1-11": { song: "Someone Like You by Adele" }, // Soul
+    "1-12": { song: "Seven Nation Army by The White Stripes" }, // Rock
+    "1-13": { song: "Shallow by Lady Gaga & Bradley Cooper" }, // Pop
+    "1-14": { song: "Old Town Road by Lil Nas X" }, // Country/Rap
+    "1-15": { song: "Thank U, Next by Ariana Grande" }, // Pop
+    "1-16": { song: "Take On Me by a-ha" }, // Synthpop
+    "1-17": { song: "Hey Jude by The Beatles" }, // Rock
+    "1-18": { song: "I Will Always Love You by Whitney Houston" }, // Soul
+    "1-19": { song: "Teenage Dirtbag by Wheatus" }, // Rock
+    "1-20": { song: "Bad Guy by Billie Eilish" }, // Electropop
+    "1-21": { song: "Dance Monkey by Tones and I" }, // Pop
+    "1-22": { song: "Ain't No Mountain High Enough by Marvin Gaye & Tammi Terrell" }, // Soul
+    "1-23": { song: "Born to Run by Bruce Springsteen" }, // Rock
+    "1-24": { song: "Radioactive by Imagine Dragons" }, // Rock
+    "1-25": { song: "All of Me by John Legend" }, // R&B
+    "1-26": { song: "Cry Me a River by Justin Timberlake" }, // R&B
+    "1-27": { song: "Take Me to Church by Hozier" }, // Indie
+    "1-28": { song: "Girls Like You by Maroon 5" }, // Pop
+    "1-29": { song: "Before He Cheats by Carrie Underwood" }, // Country
+    "1-30": { song: "Counting Stars by OneRepublic" }, // Pop-Rock
+    "1-31": { song: "Mr. Brightside by The Killers" }, // Indie Rock
+
+    "2-1": { song: "Lose Control by Missy Elliott" }, // Hip-Hop
+    "2-2": { song: "Can't Stop the Feeling! by Justin Timberlake" }, // Pop
+    "2-3": { song: "With or Without You by U2" }, // Rock
+    "2-4": { song: "Valerie by Mark Ronson ft. Amy Winehouse" }, // Funk
+    "2-5": { song: "Just the Way You Are by Bruno Mars" }, // R&B
+    "2-6": { song: "Wake Me Up by Avicii" }, // EDM
+    "2-7": { song: "Mirrors by Justin Timberlake" }, // R&B
+    "2-8": { song: "Take It Easy by Eagles" }, // Classic Rock
+    "2-9": { song: "Tik Tok by Kesha" }, // Pop
+    "2-10": { song: "Clandestino by Manu Chao" }, // Latin
+    "2-11": { song: "Here Comes the Sun by The Beatles" }, // Rock
+    "2-12": { song: "Rolling in the Deep by Adele" }, // Soul
+    "2-13": { song: "Love Shack by The B-52's" }, // New Wave
+    "2-14": { song: "I Want It That Way by Backstreet Boys" }, // Pop
+    "2-15": { song: "Ain't It Fun by Paramore" }, // Rock
+    "2-16": { song: "Come Together by The Beatles" }, // Rock
+    "2-17": { song: "Hotline Bling by Drake" }, // Hip-Hop
+    "2-18": { song: "All of Me by John Legend" }, // R&B
+    "2-19": { song: "Wonderwall by Oasis" }, // Britpop
+    "2-20": { song: "Bitter Sweet Symphony by The Verve" }, // Rock
+    "2-21": { song: "Girls Like You by Maroon 5" }, // Pop
+    "2-22": { song: "Karma Chameleon by Culture Club" }, // Pop
+    "2-23": { song: "Sweet Home Alabama by Lynyrd Skynyrd" }, // Southern Rock
+    "2-24": { song: "Dreams by Fleetwood Mac" }, // Rock
+    "2-25": { song: "Time After Time by Cyndi Lauper" }, // Pop
+    "2-26": { song: "Fight Song by Rachel Platten" }, // Pop
+    "2-27": { song: "Three Little Birds by Bob Marley" }, // Reggae
+    "2-28": { song: "Dancing Queen by ABBA" }, // Disco
+    "2-29": { song: "Somebody to Love by Queen" }, // Rock
+
+    "3-1": { song: "Radioactive by Imagine Dragons" }, // Rock
+    "3-2": { song: "Last Friday Night (T.G.I.F.) by Katy Perry" }, // Pop
+    "3-3": { song: "Stayin' Alive by Bee Gees" }, // Disco
+    "3-4": { song: "luther by Kendrick Lamar and SZA" }, // Rock
+    "3-5": { song: "Thinkin Bout You by Frank Ocean" }, // Pop
+    "3-6": { song: "Can't Feel My Face by The Weeknd" }, // R&B
+    "3-7": { song: "I Gotta Feeling by The Black Eyed Peas" }, // Pop
+    "3-8": { song: "Mr. Brightside by The Killers" }, // Indie Rock
+    "3-9": { song: "Kiss by Prince" }, // Funk
+    "3-10": { song: "Walking on Sunshine by Katrina and the Waves" }, // Pop
+    "3-11": { song: "Jolene by Dolly Parton" }, // Country
+    "3-12": { song: "The Way You Make Me Feel by Michael Jackson" }, // Pop
+    "3-13": { song: "Let It Go by Idina Menzel" }, // Soundtrack
+    "3-14": { song: "My Heart Will Go On by Celine Dion" }, // Soundtrack
+    "3-15": { song: "Take My Breath Away by Berlin" }, // Pop
+    "3-16": { song: "Somebody That I Used To Know by Gotye" }, // Indie
+    "3-17": { song: "Trip by Ella Mai" }, // R&B
+    "3-18": { song: "Smells Like Teen Spirit by Nirvana" }, // Grunge
+    "3-19": { song: "Chasing Cars by Snow Patrol" }, // Alternative Rock
+    "3-20": { song: "In the End by Linkin Park" }, // Nu Metal
+    "3-21": { song: "Boys of Summer by Don Henley" }, // Rock
+    "3-22": { song: "Say So by Doja Cat" }, // Pop
+    "3-23": { song: "I Want You Back by The Jackson 5" }, // Motown
+    "3-24": { song: "The Sound of Silence by Simon & Garfunkel" }, // Folk Rock
+    "3-25": { song: "Sunday Morning by Maroon 5" }, // Pop
+    "3-26": { song: "What a Wonderful World by Louis Armstrong" }, // Jazz
+    "3-27": { song: "The A Team by Ed Sheeran" }, // Folk
+    "3-28": { song: "Fight Song by Rachel Platten" }, // Pop
+    "3-29": { song: "Uptown Girl by Billy Joel" }, // Pop
+    "3-30": { song: "All Star by Smash Mouth" }, // Rock
+    "3-31": { song: "Dreams by Fleetwood Mac" }, // Rock
+
+    "4-1": { song: "Sweet Child o' Mine by Guns N' Roses" }, // Rock
+    "4-2": { song: "Toxic by Britney Spears" }, // Pop
+    "4-3": { song: "All of Me by John Legend" }, // R&B
+    "4-4": { song: "Say You Won't Let Go by James Arthur" }, // Pop
+    "4-5": { song: "No Scrubs by TLC" }, // R&B
+    "4-6": { song: "Take Me Home, Country Roads by John Denver" }, // Country
+    "4-7": { song: "Shallow by Lady Gaga and Bradley Cooper" }, // Soundtrack
+    "4-8": { song: "A Thousand Years by Christina Perri" }, // Soundtrack
+    "4-9": { song: "Clair de Lune by Claude Debussy" }, // Classical
+    "4-10": { song: "Here I Go Again by Whitesnake" }, // Rock
+    "4-11": { song: "Jump by Van Halen" }, // Rock
+    "4-12": { song: "Don't Stop Believin' by Journey" }, // Rock
+    "4-13": { song: "Livin' on a Prayer by Bon Jovi" }, // Rock
+    "4-14": { song: "Girls Just Want to Have Fun by Cyndi Lauper" }, // Pop
+    "4-15": { song: "I Will Survive by Gloria Gaynor" }, // Disco
+    "4-16": { song: "Under Pressure by Queen & David Bowie" }, // Rock
+    "4-17": { song: "Bad Romance by Lady Gaga" }, // Pop
+    "4-18": { song: "Summer of '69 by Bryan Adams" }, // Rock
+    "4-19": { song: "Bleeding Love by Leona Lewis" }, // Pop
+    "4-20": { song: "Gimme! Gimme! Gimme! (A Man After Midnight) by ABBA" }, // Disco
+    "4-21": { song: "Bye Bye Bye by *NSYNC" }, // Pop
+    "4-22": { song: "How Do I Live by LeAnn Rimes" }, // Country
+    "4-23": { song: "Oops!... I Did It Again by Britney Spears" }, // Pop
+    "4-24": { song: "Dancing in the Dark by Bruce Springsteen" }, // Rock
+    "4-25": { song: "Got You Where I Want You by The Flys" }, // Alternative Rock
+    "4-26": { song: "Don't Speak by No Doubt" }, // Ska
+    "4-27": { song: "Chasing Cars by Snow Patrol" }, // Alternative
+    "4-28": { song: "Counting Stars by OneRepublic" }, // Pop-Rock
+    "4-29": { song: "What Makes You Beautiful by One Direction" }, // Pop
+    "4-30": { song: "Poker Face by Lady Gaga" }, // Pop
+
+    "5-1": { song: "Shut Up and Dance by WALK THE MOON" }, // Pop-Rock
+    "5-2": { song: "Technology by The 1975" }, // Alternative Rock
+    "5-3": { song: "Waiting on the World to Change by John Mayer" }, // Pop
+    "5-4": { song: "I've Just Seen a Face by The Beatles" }, // Rock
+    "5-5": { song: "My Immortal by Evanescence" }, // Rock
+    "5-6": { song: "You Are the Best Thing by Ray Lamontagne" }, // Folk Rock
+    "5-7": { song: "With Arms Wide Open by Creed" }, // Rock
+    "5-8": { song: "Need You Now by Lady A" }, // Country
+    "5-9": { song: "Take a Bow by Rihanna" }, // Pop
+    "5-10": { song: "Back to December by Taylor Swift" }, // Country
+    "5-11": { song: "Love on the Brain by Rihanna" }, // R&B
+    "5-12": { song: "Never Gonna Give You Up by Rick Astley" }, // Pop
+    "5-13": { song: "Shape of You by Ed Sheeran" }, // Pop
+    "5-14": { song: "Shivers by Ed Sheeran" }, // Pop
+    "5-15": { song: "Rockstar by Post Malone" }, // Hip-Hop
+    "5-16": { song: "Ain't No Sunshine by Bill Withers" }, // Soul
+    "5-17": { song: "Born This Way by Lady Gaga" }, // Pop
+    "5-18": { song: "No Tears Left to Cry by Ariana Grande" }, // Pop
+    "5-19": { song: "Tears Dry on Their Own by Amy Winehouse" }, // Soul
+    "5-20": { song: "Summer by Calvin Harris" }, // EDM
+    "5-21": { song: "Love Story by Taylor Swift" }, // Country
+    "5-22": { song: "Hot in Herre by Nelly" }, // Hip-Hop
+    "5-23": { song: "Call Me Maybe by Carly Rae Jepsen" }, // Pop
+    "5-24": { song: "Spice Up Your Life by Spice Girls" }, // Pop
+    "5-25": { song: "Buckcherry by Crazy Bitch" }, // Rock
+    "5-26": { song: "Ride by Twenty One Pilots" }, // Indie
+    "5-27": { song: "Dirt Road Anthem by Jason Aldean" }, // Country
+    "5-28": { song: "Waiting All Night by Rudimental" }, // EDM
+    "5-29": { song: "A Thousand Years by Christina Perri" }, // Pop
+    "5-30": { song: "The Climb by Miley Cyrus" }, // Pop
+    "5-31": { song: "One More Night by Maroon 5" }, // Pop
+
+    "6-1": { song: "Wake Me Up by Avicii" }, // EDM
+    "6-2": { song: "Thrift Shop by Macklemore & Ryan Lewis" }, // Hip-Hop
+    "6-3": { song: "Shut Up and Dance by WALK THE MOON" }, // Pop-Rock
+    "6-4": { song: "Good Vibrations by The Beach Boys" }, // Pop
+    "6-5": { song: "Every Breath You Take by The Police" }, // Rock
+    "6-6": { song: "Crazy by Gnarls Barkley" }, // Neo-Soul
+    "6-7": { song: "Don't Speak by No Doubt" }, // Ska
+    "6-8": { song: "Umbrella by Rihanna ft. Jay-Z" }, // Pop
+    "6-9": { song: "Insomnia by Faithless" }, // EDM
+    "6-10": { song: "Valerie by Mark Ronson ft. Amy Winehouse" }, // Funk
+    "6-11": { song: "Believer by Imagine Dragons" }, // Rock
+    "6-12": { song: "Shape of You by Ed Sheeran" }, // Pop
+    "6-13": { song: "I Shot the Sheriff by Eric Clapton" }, // Rock
+    "6-14": { song: "Watermelon Sugar by Harry Styles" }, // Pop
+    "6-15": { song: "Count on Me by Bruno Mars" }, // Pop
+    "6-16": { song: "Bad Romance by Lady Gaga" }, // Pop
+    "6-17": { song: "Put It All on Me by Ed Sheeran" }, // Pop
+    "6-18": { song: "Hometown Glory by Adele" }, // Soul
+    "6-19": { song: "Jungle Boogie by Kool & The Gang" }, // Funk
+    "6-20": { song: "Just the Way You Are by Bruno Mars" }, // R&B
+    "6-21": { song: "All The Small Things by Blink-182" }, // Pop-Punk
+    "6-22": { song: "Somebody to Love by Jefferson Airplane" }, // Rock
+    "6-23": { song: "Stronger by Kanye West" }, // Hip-Hop
+    "6-24": { song: "Mamma Mia by ABBA" }, // Pop
+    "6-25": { song: "Summer of '69 by Bryan Adams" }, // Rock
+    "6-26": { song: "Lady by Little River Band" }, // Rock
+    "6-27": { song: "Kryptonite by 3 Doors Down" }, // Rock
+    "6-28": { song: "Shallow by Lady Gaga & Bradley Cooper" }, // Soundtrack
+    "6-29": { song: "Old Town Road by Lil Nas X" }, // Country/Rap
+    "6-30": { song: "Say So by Doja Cat" }, // Pop
+
+    "7-1": { song: "Satisfaction by The Rolling Stones" }, // Rock
+    "7-2": { song: "Shine by The New Radicals" }, // Rock
+    "7-3": { song: "If I Ain't Got You by Alicia Keys" }, // R&B
+    "7-4": { song: "Born to Run by Bruce Springsteen" }, // Rock
+    "7-5": { song: "Numb by Linkin Park" }, // Rock
+    "7-6": { song: "Rolling in the Deep by Adele" }, // Soul
+    "7-7": { song: "Summer of '69 by Bryan Adams" }, // Rock
+    "7-8": { song: "Super Bass by Nicki Minaj" }, // Hip-Hop
+    "7-9": { song: "We Found Love by Rihanna ft. Calvin Harris" }, // Pop
+    "7-10": { song: "Truth Hurts by Lizzo" }, // R&B
+    "7-11": { song: "Lose Yourself by Eminem" }, // Hip-Hop
+    "7-12": { song: "Happy by Pharrell Williams" }, // Pop
+    "7-13": { song: "Bye Bye Bye by *NSYNC" }, // Pop
+    "7-14": { song: "Teenage Dream by Katy Perry" }, // Pop
+    "7-15": { song: "Bills, Bills, Bills by Destiny's Child" }, // R&B
+    "7-16": { song: "Get Lucky by Daft Punk ft. Pharrell Williams" }, // Disco
+    "7-17": { song: "Treasure by Bruno Mars" }, // Funk
+    "7-18": { song: "Born to be Wild by Steppenwolf" }, // Rock
+    "7-19": { song: "Every Rose Has Its Thorn by Poison" }, // Rock
+    "7-20": { song: "I Will Always Love You by Whitney Houston" }, // Soul
+    "7-21": { song: "Perfect by Ed Sheeran" }, // Pop
+    "7-22": { song: "Say It Right by Nelly Furtado" }, // Pop
+    "7-23": { song: "Little Lion Man by Mumford & Sons" }, // Folk Rock
+    "7-24": { song: "Proud Mary by Tina Turner" }, // Rock
+    "7-25": { song: "Smooth by Santana ft. Rob Thomas" }, // Rock
+    "7-26": { song: "Big Fun by The B-52's" }, // New Wave
+    "7-27": { song: "American Pie by Don McLean" }, // Folk Rock
+    "7-28": { song: "Gerudo Valley Theme by Koji Kondo" }, // Instrumental
+    "7-29": { song: "Counting Stars by OneRepublic" }, // Pop-Rock
+    "7-30": { song: "September by Earth, Wind & Fire" }, // Funk
+    "7-31": { song: "Ain't No Mountain High Enough by Marvin Gaye & Tammi Terrell" }, // Soul
+
+    "8-1": { song: "I Want to Break Free by Queen" }, // Rock
+    "8-2": { song: "We Are Young by Fun." }, // Indie Pop
+    "8-3": { song: "Shake It Off by Taylor Swift" }, // Pop
+    "8-4": { song: "Zombie by The Cranberries" }, // Rock
+    "8-5": { song: "Big Girls Don't Cry by Fergie" }, // Pop
+    "8-6": { song: "Stay by Rihanna ft. Mikky Ekko" }, // Pop
+    "8-7": { song: "Take It Easy by Eagles" }, // Classic Rock
+    "8-8": { song: "Candle in the Wind by Elton John" }, // Rock
+    "8-9": { song: "Every Breath You Take by The Police" }, // Rock
+    "8-10": { song: "Back to Black by Amy Winehouse" }, // Soul
+    "8-11": { song: "Mr. Brightside by The Killers" }, // Indie Rock
+    "8-12": { song: "Nobody Wants to Be Lonely by Ricky Martin & Christina Aguilera" }, // Pop
+    "8-13": { song: "All the Small Things by Blink-182" }, // Pop-Punk
+    "8-14": { song: "Boulevard of Broken Dreams by Green Day" }, // Rock
+    "8-15": { song: "Lose Yourself by Eminem" }, // Hip-Hop
+    "8-16": { song: "Chasing Cars by Snow Patrol" }, // Alternative
+    "8-17": { song: "With Arms Wide Open by Creed" }, // Rock
+    "8-18": { song: "Bleeding Love by Leona Lewis" }, // Pop
+    "8-19": { song: "Summer of '69 by Bryan Adams" }, // Rock
+    "8-20": { song: "Landslide by Fleetwood Mac" }, // Rock
+    "8-21": { song: "Livin' on a Prayer by Bon Jovi" }, // Rock
+    "8-22": { song: "Valerie by Mark Ronson ft. Amy Winehouse" }, // Funk
+    "8-23": { song: "Hallelujah by Jeff Buckley" }, // Rock
+    "8-24": { song: "Mamma Mia by ABBA" }, // Pop
+    "8-25": { song: "Everybody Wants to Rule the World by Tears for Fears" }, // Rock
+    "8-26": { song: "Blow by Kesha" }, // Pop
+    "8-27": { song: "Wildest Dreams by Taylor Swift" }, // Pop
+    "8-28": { song: "Can't Stop by Red Hot Chili Peppers" }, // Rock
+    "8-29": { song: "Man in the Mirror by Michael Jackson" }, // Pop
+    "8-30": { song: "Under Pressure by Queen & David Bowie" }, // Rock
+    "8-31": { song: "Radioactive by Imagine Dragons" }, // Rock
+
+    "9-1": { song: "Good Riddance (Time of Your Life) by Green Day" }, // Rock
+    "9-2": { song: "Hotline Bling by Drake" }, // Hip-Hop
+    "9-3": { song: "Take on Me by a-ha" }, // Synthpop
+    "9-4": { song: "Thinking Out Loud by Ed Sheeran" }, // Pop
+    "9-5": { song: "Ain't Nobody by Chaka Khan" }, // Funk
+    "9-6": { song: "Rolling in the Deep by Adele" }, // Soul
+    "9-7": { song: "Runaway by Kanye West" }, // Hip-Hop
+    "9-8": { song: "Empire State of Mind by Jay-Z & Alicia Keys" }, // Hip-Hop
+    "9-9": { song: "Everybody (Backstreet's Back) by Backstreet Boys" }, // Pop
+    "9-10": { song: "Sugar by Maroon 5" }, // Pop
+    "9-11": { song: "Cry Me a River by Justin Timberlake" }, // R&B
+    "9-12": { song: "Put It All on Me by Ed Sheeran" }, // Pop
+    "9-13": { song: "Bleeding Love by Leona Lewis" }, // Pop
+    "9-14": { song: "Hot Stuff by Donna Summer" }, // Disco
+    "9-15": { song: "Stronger by Kelly Clarkson" }, // Pop
+    "9-16": { song: "Rock Your Body by Justin Timberlake" }, // R&B
+    "9-17": { song: "Bye Bye Bye by *NSYNC" }, // Pop
+    "9-18": { song: "Let's Get It On by Marvin Gaye" }, // Soul
+    "9-19": { song: "Here Comes the Sun by The Beatles" }, // Rock
+    "9-20": { song: "Don't Stop Believin' by Journey" }, // Rock
+    "9-21": { song: "Stronger by Kanye West" }, // Hip-Hop
+    "9-22": { song: "Dancing Queen by ABBA" }, // Disco
+    "9-23": { song: "I Want It That Way by Backstreet Boys" }, // Pop
+    "9-24": { song: "Supremacy by Muse" }, // Rock
+    "9-25": { song: "Can't Help Falling in Love by Elvis Presley" }, // Rock
+    "9-26": { song: "Ain't Nobody by Chaka Khan" }, // Funk
+    "9-27": { song: "Only Girl (In The World) by Rihanna" }, // Pop
+    "9-28": { song: "Thinking Out Loud by Ed Sheeran" }, // Pop
+    "9-29": { song: "Sweet Child o' Mine by Guns N' Roses" }, // Rock
+    "9-30": { song: "Jump by Van Halen" }, // Rock
+
+    "10-1": { song: "We Are Never Ever Getting Back Together by Taylor Swift" }, // Pop
+    "10-2": { song: "Happy by Pharrell Williams" }, // Pop
+    "10-3": { song: "Let’s Get It On by Marvin Gaye" }, // Soul
+    "10-4": { song: "Chasing Cars by Snow Patrol" }, // Alternative Rock
+    "10-5": { song: "Shake It Off by Taylor Swift" }, // Pop
+    "10-6": { song: "Thank U, Next by Ariana Grande" }, // Pop
+    "10-7": { song: "Irreplaceable by Beyoncé" }, // R&B
+    "10-8": { song: "Someone Like You by Adele" }, // Soul
+    "10-9": { song: "I Gotta Feeling by The Black Eyed Peas" }, // Pop
+    "10-10": { song: "Let It Go by Idina Menzel" }, // Soundtrack
+    "10-11": { song: "See You Again by Wiz Khalifa ft. Charlie Puth" }, // Hip-Hop
+    "10-12": { song: "Tell Me You Love Me by Demi Lovato" }, // Pop
+    "10-13": { song: "Bright Lights Bigger City by CeeLo Green" }, // R&B
+    "10-14": { song: "Dancing on My Own by Robyn" }, // Pop
+    "10-15": { song: "Someone You Loved by Lewis Capaldi" }, // Pop
+    "10-16": { song: "Say You Won't Let Go by James Arthur" }, // Pop
+    "10-17": { song: "Thinking Out Loud by Ed Sheeran" }, // Pop
+    "10-18": { song: "Run the World (Girls) by Beyoncé" }, // R&B
+    "10-19": { song: "Back to December by Taylor Swift" }, // Country
+    "10-20": { song: "All of Me by John Legend" }, // R&B
+    "10-21": { song: "One Kiss by Calvin Harris & Dua Lipa" }, // Dance
+    "10-22": { song: "The Greatest by Sia" }, // Pop
+    "10-23": { song: "Never Forget You by Zara Larsson ft. MNEK" }, // Dance-Pop
+    "10-24": { song: "Lean on by Major Lazer" }, // EDM
+    "10-25": { song: "Finesse by Bruno Mars" }, // R&B
+    "10-26": { song: "Love Me Like You Do by Ellie Goulding" }, // Pop
+    "10-27": { song: "Closer by The Chainsmokers" }, // EDM
+    "10-28": { song: "Ignition (Remix) by R. Kelly" }, // R&B
+    "10-29": { song: "Shape of You by Ed Sheeran" }, // Pop
+    "10-30": { song: "Uptown Funk by Mark Ronson ft. Bruno Mars" }, // Funk
+    "10-31": { song: "Thriller by Michael Jackson" }, // Pop
+
+    "11-1": { song: "Somebody That I Used to Know by Gotye" }, // Indie Pop
+    "11-2": { song: "Party in the USA by Miley Cyrus" }, // Pop
+    "11-3": { song: "Need You Now by Lady A" }, // Country
+    "11-4": { song: "Hotline Bling by Drake" }, // Hip-Hop
+    "11-5": { song: "Stay by Rihanna ft. Mikky Ekko" }, // Pop
+    "11-6": { song: "Somebody to Love by Queen" }, // Rock
+    "11-7": { song: "Just a Girl by No Doubt" }, // Pop-Rock
+    "11-8": { song: "Knocking on Heaven's Door by Bob Dylan" }, // Folk Rock
+    "11-9": { song: "Wake Me Up by Avicii" }, // EDM
+    "11-10": { song: "Stand by Me by Ben E. King" }, // Soul
+    "11-11": { song: "Chasing Cars by Snow Patrol" }, // Alternative Rock
+    "11-12": { song: "I'm Yours by Jason Mraz" }, // Folk
+    "11-13": { song: "Love Yourself by Justin Bieber" }, // Pop
+    "11-14": { song: "What Do You Mean? by Justin Bieber" }, // Pop
+    "11-15": { song: "Bad Blood by Taylor Swift" }, // Pop
+    "11-16": { song: "Royals by Lorde" }, // Indie
+    "11-17": { song: "Shape of You by Ed Sheeran" }, // Pop
+    "11-18": { song: "We Can't Stop by Miley Cyrus" }, // Pop
+    "11-19": { song: "Sugar by Maroon 5" }, // Pop
+    "11-20": { song: "Issues by Julia Michaels" }, // Pop
+    "11-21": { song: "Young Dumb & Broke by Khalid" }, // R&B
+    "11-22": { song: "New Rules by Dua Lipa" }, // Pop
+    "11-23": { song: "Perfect by Ed Sheeran" }, // Pop
+    "11-24": { song: "Betty by Taylor Swift" }, // Country
+    "11-25": { song: "Someone You Loved by Lewis Capaldi" }, // Pop
+    "11-26": { song: "Good Riddance (Time of Your Life) by Green Day" }, // Rock
+    "11-27": { song: "Bohemian Rhapsody by Queen" }, // Rock
+    "11-28": { song: "Mr. Brightside by The Killers" }, // Indie
+    "11-29": { song: "Someone Like You by Adele" }, // Soul
+    "11-30": { song: "Hurt by Christina Aguilera" }, // Pop
+
+    "12-1": { song: "Jingle Bells by Bing Crosby" }, // Holiday
+    "12-2": { song: "Last Christmas by Wham!" }, // Holiday
+    "12-3": { song: "All I Want for Christmas Is You by Mariah Carey" }, // Holiday
+    "12-4": { song: "Feliz Navidad by José Feliciano" }, // Holiday
+    "12-5": { song: "Santa Baby by Eartha Kitt" }, // Holiday
+    "12-6": { song: "Wonderful Christmastime by Paul McCartney" }, // Holiday
+    "12-7": { song: "Do They Know It's Christmas? by Band Aid" }, // Holiday
+    "12-8": { song: "Christmas (Baby Please Come Home) by Darlene Love" }, // Holiday
+    "12-9": { song: "Rudolph the Red-Nosed Reindeer by Gene Autry" }, // Holiday
+    "12-10": { song: "It's Beginning to Look a Lot Like Christmas by Perry Como" }, // Holiday
+    "12-11": { song: "Rockin' Around the Christmas Tree by Brenda Lee" }, // Holiday
+    "12-12": { song: "Blue Christmas by Elvis Presley" }, // Holiday
+    "12-13": { song: "Silver Bells by Bing Crosby & Carol Richards" }, // Holiday
+    "12-14": { song: "Sleigh Ride by The Ronettes" }, // Holiday
+    "12-15": { song: "A Holly Jolly Christmas by Burl Ives" }, // Holiday
+    "12-16": { song: "Let It Snow! Let It Snow! Let It Snow! by Dean Martin" }, // Holiday
+    "12-17": { song: "Happy Christmas (War Is Over) by John Lennon" }, // Holiday
+    "12-18": { song: "The Christmas Song by Nat King Cole" }, // Holiday
+    "12-19": { song: "Have Yourself a Merry Little Christmas by Judy Garland" }, // Holiday
+    "12-20": { song: "Deck the Halls by Bing Crosby" }, // Holiday
+    "12-21": { song: "Jingle Bell Rock by Bobby Helms" }, // Holiday
+    "12-22": { song: "Christmas Time Is Here by Vince Guaraldi" }, // Holiday
+    "12-23": { song: "What Child Is This? by Andrea Bocelli" }, // Holiday
+    "12-24": { song: "O Holy Night by Mariah Carey" }, // Holiday
+    "12-25": { song: "We Wish You a Merry Christmas by Traditional" }, // Holiday
+    "12-26": { song: "Winter Wonderland by Bing Crosby" }, // Holiday
+    "12-27": { song: "The Little Drummer Boy by Joan Jett" }, // Holiday
+    "12-28": { song: "Merry Christmas Everyone by Shakin' Stevens" }, // Holiday
+    "12-29": { song: "Happy New Year by ABBA" }, // Holiday
+    "12-30": { song: "Frosty the Snowman by Gene Autry" }, // Holiday
+    "12-31": { song: "New Year's Day by Taylor Swift" }, // Pop
+};
