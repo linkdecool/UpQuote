@@ -18,66 +18,27 @@
             margin: 0;
             padding: 0;
             height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         /* Styling for the container */
         .container {
-    background-color: rgba(255, 255, 255, 0.8); /* Light transparent background */
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    margin: 50px auto;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #333; /* Dark color for text */
-}
-
-/* Optional: Add text shadow to headings and content for contrast */
-h1, #content, #source, #song, #date {
-    color: #fff; /* White text for better contrast */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add shadow for contrast */
-}
-
-        /* Cloud styling */
-        #clouds {
-            position: absolute;
-            top: 20px;
-            width: 100%;
-            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.8); /* Light transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333; /* Dark color for text */
+            flex-grow: 1;
         }
 
-        .cloud {
-            position: absolute;
-            width: 100px;
-            animation: moveClouds 60s linear infinite;
-        }
-
-        .cloud1 {
-            top: 50px;
-            left: -100px;
-            animation-duration: 40s;
-        }
-
-        .cloud2 {
-            top: 540px;
-            left: -200px;
-            animation-duration: 70s;
-        }
-
-        .cloud3 {
-            top: 780px;
-            left: -150px;
-            animation-duration: 110s;
-        }
-
-        @keyframes moveClouds {
-            0% {
-                left: -100px;
-            }
-
-            100% {
-                left: 100%;
-            }
+        h1, #content, #source, #song, #date {
+            color: #fff; /* White text for better contrast */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Add shadow for contrast */
         }
 
         /* Countdown timer styling */
@@ -96,16 +57,27 @@ h1, #content, #source, #song, #date {
             font-size: 18px;
         }
 
-        /* Feature request link */
-        .feature-request a {
-            color: #ff6600;
-            text-decoration: none;
+        /* Button styling */
+        #downloadImage {
+            margin-top: 10px;
+            padding: 5px 10px; /* Smaller padding */
+            font-size: 14px; /* Smaller font size */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            position: absolute;
+            bottom: -450px; /* Position at the bottom */
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .feature-request a:hover {
-            text-decoration: underline;
+        #downloadImage:hover {
+            background-color: #0056b3;
         }
     </style>
+
 </head>
 
 <body>
@@ -121,19 +93,23 @@ h1, #content, #source, #song, #date {
             <option value="quotes">Quotes</option>
             <option value="bibleVerses">Bible Verses</option>
             <option value="affirmations">Affirmations</option>
-            <option value="songs">Song of the Day</option> <!-- New Option -->
+            <option value="songs">Song of the Day</option>
         </select>
 
         <p id="date"></p>
         <p id="content"></p>
         <p id="source"></p>
-        <p id="song"></p> <!-- Placeholder for Song of the Day -->
+        <p id="song"></p>
 
         <div id="countdown">
             <div class="timer-box" id="hours">00</div>
             <div class="timer-box" id="minutes">00</div>
             <div class="timer-box" id="seconds">00</div>
         </div>
+
+        <button id="downloadImage">Download Image</button>
+
+        <canvas id="inspirationCanvas" style="display:none;"></canvas>
 
         <p class="feature-request">
             <a href="feature-request.html">Have a feature request? Click here!</a>
@@ -142,7 +118,6 @@ h1, #content, #source, #song, #date {
 
     <script src="quotes.js"></script> <!-- Link to the external JavaScript file with data -->
     <script>
-        // Check if URL contains '?nfc=true'
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('nfc') !== 'true') {
             document.body.style.display = 'none';
@@ -151,7 +126,6 @@ h1, #content, #source, #song, #date {
             document.body.style.display = 'block';
         }
 
-        // Function to get inspiration content based on type
         function getInspiration(type) {
             const today = new Date();
             const dayMonth = `${today.getMonth() + 1}-${today.getDate()}`;
@@ -167,10 +141,9 @@ h1, #content, #source, #song, #date {
             }
         }
 
-        // Function to display the selected type of inspiration
         function displayInspiration() {
             const contentType = document.getElementById('contentType').value;
-            localStorage.setItem('contentType', contentType); // Save selection
+            localStorage.setItem('contentType', contentType);
 
             const inspirationData = getInspiration(contentType);
 
@@ -191,45 +164,76 @@ h1, #content, #source, #song, #date {
                 document.getElementById('source').textContent = "";
                 document.getElementById('song').textContent = `🎵 Song of the Day: ${inspirationData.song}`;
             }
+
+            generateImage();
         }
 
-        // Function to display the current date
-        function displayDate() {
-            const today = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('date').textContent = `Today is: ${today.toLocaleDateString(undefined, options)}`;
+        function generateImage() {
+            const canvas = document.getElementById('inspirationCanvas');
+            const ctx = canvas.getContext('2d');
+            const title = document.getElementById('content').textContent;
+            const source = document.getElementById('source').textContent;
+
+            const canvasSize = 600;  // Set both width and height to ensure a 1:1 ratio
+            canvas.width = canvasSize;
+            canvas.height = canvasSize;
+
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#007bff';
+            ctx.font = 'bold 32px Arial';  // Increased font size for title
+            ctx.fillText("Today's Inspiration", 50, 50);
+
+            ctx.fillStyle = '#333';
+            ctx.font = 'bold 40px Arial';  // Increased font size for quote text
+            wrapText(ctx, title, 50, 100, canvasSize - 100, 40);  // Increased line height
+
+            ctx.fillStyle = '#555';
+            ctx.font = 'italic 22px Arial';  // Increased font size for source
+            ctx.fillText(source, 50, canvasSize - 50, canvasSize - 100);
+
+            // Add the "Made with upbandquotes.com" text at the bottom
+            ctx.fillStyle = '#333';  // Set text color
+            ctx.font = 'italic 18px Arial';  // Set font size and style
+            const text = "Made with upbandquotes.com";
+            const textWidth = ctx.measureText(text).width;  // Measure text width
+            const xPosition = (canvas.width - textWidth) / 2;  // Center text
+            const yPosition = canvas.height - 30;  // Set vertical position
+            ctx.fillText(text, xPosition, yPosition);
         }
 
-        // Function to start the countdown timer to midnight
-        function startCountdown() {
-            const now = new Date();
-            const nextQuoteTime = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
-            const timeLeft = nextQuoteTime - now;
-
-            const updateCountdown = () => {
-                const timeLeft = nextQuoteTime - new Date();
-                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-            };
-
-            setInterval(updateCountdown, 1000);
-            updateCountdown();
+        function wrapText(context, text, x, y, maxWidth, lineHeight) {
+            let words = text.split(' ');
+            let line = '';
+            for (let i = 0; i < words.length; i++) {
+                let testLine = line + words[i] + ' ';
+                let metrics = context.measureText(testLine);
+                let testWidth = metrics.width;
+                if (testWidth > maxWidth && i > 0) {
+                    context.fillText(line, x, y);
+                    line = words[i] + ' ';
+                    y += lineHeight;
+                } else {
+                    line = testLine;
+                }
+            }
+            context.fillText(line, x, y);
         }
 
-        // Event listener for content type change
+        document.getElementById('downloadImage').onclick = function () {
+            const link = document.createElement('a');
+            link.download = 'daily_inspiration.png';
+            link.href = document.getElementById('inspirationCanvas').toDataURL();
+            link.click();
+        };
+
         document.getElementById('contentType').addEventListener('change', displayInspiration);
 
-        // On page load
         window.onload = () => {
             const savedContentType = localStorage.getItem('contentType') || 'quotes';
             document.getElementById('contentType').value = savedContentType;
             displayInspiration();
-            displayDate();
-            startCountdown();
         };
     </script>
 </body>
