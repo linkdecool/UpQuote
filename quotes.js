@@ -87,7 +87,7 @@ const dailyQuotes = {
     "3-20": { quote: "Little things make big days.", author: "Unknown" },
     "3-21": { quote: "It's going to be hard, but hard does not mean impossible.", author: "Unknown" },
     "3-22": { quote: "Don’t wait for opportunity. Create it.", author: "Unknown" },
-    "3-23": { quote: "Sometimes we’re tested not to show our weaknesses, but to discover our strengths.", author: "Unknown" },
+    "3-23": { quote: "Change your life today. Don't gamble on the future, act now, without delay.", author: "Simone de Beauvoir" },
     "3-24": { quote: "The key to success is to focus on goals, not obstacles.", author: "Unknown" },
     "3-25": { quote: "Dream bigger. Do bigger.", author: "Unknown" },
     "3-26": { quote: "Push yourself, because no one else is going to do it for you.", author: "Unknown" },
