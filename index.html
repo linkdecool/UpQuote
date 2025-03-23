@@ -1,23 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Inspiration</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
     <style>
-        /* Hide everything initially */
+        /* Sunset background */
         body {
-            display: none;
+            background-image: url('IMG_1487.jpeg'); /* Updated to use your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: none; /* Hide initially for NFC check */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        /* Styling for the container */
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Light background with slight transparency */
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cloud styling */
+        #clouds {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .cloud {
+            position: absolute;
+            width: 100px;
+            animation: moveClouds 60s linear infinite;
+        }
+
+        .cloud1 {
+            top: 50px;
+            left: -100px;
+            animation-duration: 60s;
+        }
+
+        .cloud2 {
+            top: 100px;
+            left: -200px;
+            animation-duration: 70s;
+        }
+
+        .cloud3 {
+            top: 150px;
+            left: -150px;
+            animation-duration: 80s;
+        }
+
+        @keyframes moveClouds {
+            0% {
+                left: -100px;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Countdown timer styling */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .timer-box {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        /* Feature request link */
+        .feature-request a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+
+        .feature-request a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <div id="clouds">
         <img src="cloud1.png" class="cloud cloud1" alt="Cloud 1">
         <img src="cloud2.png" class="cloud cloud2" alt="Cloud 2">
         <img src="cloud3.png" class="cloud cloud3" alt="Cloud 3">
     </div>
+
     <div class="container">
         <h1>Daily Inspiration</h1>
         <select id="contentType">
@@ -26,19 +116,23 @@
             <option value="affirmations">Affirmations</option>
             <option value="songs">Song of the Day</option> <!-- New Option -->
         </select>
+
         <p id="date"></p>
         <p id="content"></p>
         <p id="source"></p>
         <p id="song"></p> <!-- Placeholder for Song of the Day -->
+
         <div id="countdown">
             <div class="timer-box" id="hours">00</div>
             <div class="timer-box" id="minutes">00</div>
             <div class="timer-box" id="seconds">00</div>
         </div>
+
         <p class="feature-request">
             <a href="feature-request.html">Have a feature request? Click here!</a>
         </p>
     </div>
+
     <script src="quotes.js"></script> <!-- Link to the external JavaScript file with data -->
     <script>
         // Check if URL contains '?nfc=true'
@@ -132,4 +226,5 @@
         };
     </script>
 </body>
+
 </html>
