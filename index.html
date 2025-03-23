@@ -169,65 +169,81 @@
         }
 
         function generateImage() {
-            const canvas = document.getElementById('inspirationCanvas');
-            const ctx = canvas.getContext('2d');
-            const title = document.getElementById('content').textContent;
-            const source = document.getElementById('source').textContent;
+    const canvas = document.getElementById('inspirationCanvas');
+    const ctx = canvas.getContext('2d');
+    const title = document.getElementById('content').textContent;
+    const source = document.getElementById('source').textContent;
 
-            const canvasSize = 600;  // Set both width and height to ensure a 1:1 ratio
-            canvas.width = canvasSize;
-            canvas.height = canvasSize;
+    const canvasSize = 600;  // Set both width and height to ensure a 1:1 ratio
+    canvas.width = canvasSize;
+    canvas.height = canvasSize;
 
-            const backgroundImage = new Image();
-            backgroundImage.src = 'IMG_1487.jpeg'; // Sunset background image
+    // Create a new image object for the sunset background
+    const backgroundImage = new Image();
+    backgroundImage.src = 'IMG_1487.jpeg'; // Sunset background image
 
-            backgroundImage.onload = function () {
-                ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Draw the background
+    // Ensure image is fully loaded before attempting to draw
+    backgroundImage.onload = function () {
+        // Once the image is loaded, draw it on the canvas
+        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Draw the background
 
-                ctx.fillStyle = '#ffffff';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Add a semi-transparent background behind the text for better contrast
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)'; // Black with 50% opacity
+        ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill the background
 
-                ctx.fillStyle = '#007bff';
-                ctx.font = 'bold 32px Arial';  // Increased font size for title
-                ctx.fillText("Today's Inspiration", 50, 50);
+        // Title text
+        ctx.fillStyle = '#ffffff';  // White color for better contrast with dark background
+        ctx.font = 'bold 32px Arial';  // Increased font size for title
+        ctx.fillText("Today's Inspiration", 50, 50);
 
-                ctx.fillStyle = '#333';
-                ctx.font = 'bold 40px Arial';  // Increased font size for quote text
-                wrapText(ctx, title, 50, 100, canvasSize - 100, 40);  // Increased line height
+        // Quote text with white color and semi-transparent background
+        ctx.fillStyle = '#ffffff';  // White color
+        ctx.font = 'bold 40px Arial';  // Increased font size for quote text
+        wrapText(ctx, title, 50, 100, canvasSize - 100, 40);  // Increased line height
 
-                ctx.fillStyle = '#555';
-                ctx.font = 'italic 22px Arial';  // Increased font size for source
-                ctx.fillText(source, 50, canvasSize - 50, canvasSize - 100);
+        // Source text with a darker shade for contrast
+        ctx.fillStyle = '#dddddd';  // Light gray for source text
+        ctx.font = 'italic 22px Arial';  // Increased font size for source
+        ctx.fillText(source, 50, canvasSize - 50, canvasSize - 100);
 
-                // Add the "Made with upbandquotes.com" text at the bottom
-                ctx.fillStyle = '#333';  // Set text color
-                ctx.font = 'italic 18px Arial';  // Set font size and style
-                const text = "Made with upbandquotes.com";
-                const textWidth = ctx.measureText(text).width;  // Measure text width
-                const xPosition = (canvas.width - textWidth) / 2;  // Center text
-                const yPosition = canvas.height - 30;  // Set vertical position
-                ctx.fillText(text, xPosition, yPosition);
-            };
+        // Add the "Made with upbandquotes.com" text at the bottom
+        ctx.fillStyle = '#ffffff';  // White color for consistency
+        ctx.font = 'italic 18px Arial';  // Set font size and style
+        const text = "Made with upbandquotes.com";
+        const textWidth = ctx.measureText(text).width;  // Measure text width
+        const xPosition = (canvas.width - textWidth) / 2;  // Center text
+        const yPosition = canvas.height - 30;  // Set vertical position
+        ctx.fillText(text, xPosition, yPosition);
+    };
+
+    // Handle image loading error
+    backgroundImage.onerror = function () {
+        console.error('Error loading the background image.');
+        ctx.fillStyle = '#333';
+        ctx.font = 'bold 40px Arial';
+        ctx.fillText('Background image failed to load', 50, 100);
+    };
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+    var words = text.split(' ');
+    var line = '';
+    var lineCount = 0;
+    
+    for(var n = 0; n < words.length; n++) {
+        var testLine = line + words[n] + ' ';
+        var testWidth = ctx.measureText(testLine).width;
+        
+        if(testWidth > maxWidth && n > 0) {
+            ctx.fillText(line, x, y + (lineCount * lineHeight));
+            line = words[n] + ' ';
+            lineCount++;
+        } else {
+            line = testLine;
         }
-
-        function wrapText(context, text, x, y, maxWidth, lineHeight) {
-            let words = text.split(' ');
-            let line = '';
-            for (let i = 0; i < words.length; i++) {
-                let testLine = line + words[i] + ' ';
-                let metrics = context.measureText(testLine);
-                let testWidth = metrics.width;
-                if (testWidth > maxWidth && i > 0) {
-                    context.fillText(line, x, y);
-                    line = words[i] + ' ';
-                    y += lineHeight;
-                } else {
-                    line = testLine;
-                }
-            }
-            context.fillText(line, x, y);
-        }
-
+    }
+    ctx.fillText(line, x, y + (lineCount * lineHeight));
+}
         document.getElementById('downloadImage').onclick = function () {
             const link = document.createElement('a');
             link.download = 'daily_inspiration.png';
