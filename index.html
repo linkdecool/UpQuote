@@ -178,29 +178,36 @@
             canvas.width = canvasSize;
             canvas.height = canvasSize;
 
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            const backgroundImage = new Image();
+            backgroundImage.src = 'IMG_1487.jpeg'; // Sunset background image
 
-            ctx.fillStyle = '#007bff';
-            ctx.font = 'bold 32px Arial';  // Increased font size for title
-            ctx.fillText("Today's Inspiration", 50, 50);
+            backgroundImage.onload = function () {
+                ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height); // Draw the background
 
-            ctx.fillStyle = '#333';
-            ctx.font = 'bold 40px Arial';  // Increased font size for quote text
-            wrapText(ctx, title, 50, 100, canvasSize - 100, 40);  // Increased line height
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            ctx.fillStyle = '#555';
-            ctx.font = 'italic 22px Arial';  // Increased font size for source
-            ctx.fillText(source, 50, canvasSize - 50, canvasSize - 100);
+                ctx.fillStyle = '#007bff';
+                ctx.font = 'bold 32px Arial';  // Increased font size for title
+                ctx.fillText("Today's Inspiration", 50, 50);
 
-            // Add the "Made with upbandquotes.com" text at the bottom
-            ctx.fillStyle = '#333';  // Set text color
-            ctx.font = 'italic 18px Arial';  // Set font size and style
-            const text = "Made with upbandquotes.com";
-            const textWidth = ctx.measureText(text).width;  // Measure text width
-            const xPosition = (canvas.width - textWidth) / 2;  // Center text
-            const yPosition = canvas.height - 30;  // Set vertical position
-            ctx.fillText(text, xPosition, yPosition);
+                ctx.fillStyle = '#333';
+                ctx.font = 'bold 40px Arial';  // Increased font size for quote text
+                wrapText(ctx, title, 50, 100, canvasSize - 100, 40);  // Increased line height
+
+                ctx.fillStyle = '#555';
+                ctx.font = 'italic 22px Arial';  // Increased font size for source
+                ctx.fillText(source, 50, canvasSize - 50, canvasSize - 100);
+
+                // Add the "Made with upbandquotes.com" text at the bottom
+                ctx.fillStyle = '#333';  // Set text color
+                ctx.font = 'italic 18px Arial';  // Set font size and style
+                const text = "Made with upbandquotes.com";
+                const textWidth = ctx.measureText(text).width;  // Measure text width
+                const xPosition = (canvas.width - textWidth) / 2;  // Center text
+                const yPosition = canvas.height - 30;  // Set vertical position
+                ctx.fillText(text, xPosition, yPosition);
+            };
         }
 
         function wrapText(context, text, x, y, maxWidth, lineHeight) {
@@ -234,7 +241,28 @@
             const savedContentType = localStorage.getItem('contentType') || 'quotes';
             document.getElementById('contentType').value = savedContentType;
             displayInspiration();
+            startClock();
         };
+
+        // Clock functionality
+        function startClock() {
+            setInterval(updateClock, 1000); // Update every second
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            document.getElementById('hours').textContent = formatTime(hours);
+            document.getElementById('minutes').textContent = formatTime(minutes);
+            document.getElementById('seconds').textContent = formatTime(seconds);
+        }
+
+        function formatTime(time) {
+            return time < 10 ? '0' + time : time;
+        }
     </script>
 </body>
 
